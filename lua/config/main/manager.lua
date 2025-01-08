@@ -30,6 +30,8 @@ return require("packer").startup(function(use)
   use 'L3MON4D3/LuaSnip'
   -- INTERFACE --
   use{'lewis6991/gitsigns.nvim', requires={'nvim-lua/plenary.nvim'}}
-  use{"nvim-lualine/lualine.nvim", event = "BufEnter", requires = { "nvim-web-devicons" }}
+  use{"nvim-lualine/lualine.nvim", event="BufEnter", requires={"nvim-web-devicons"}}
+  -- FUNCTIONALITY --
+  use {"nvim-telescope/telescope.nvim", dependencies={"nvim-lus/plenary.nvim"}}
   if PACKER_BOOTSTRAP then require('packer').sync() end
 end)

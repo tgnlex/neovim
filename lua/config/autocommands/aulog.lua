@@ -1,8 +1,9 @@
-command! LogAutocmds call s:log_autocmds_toggle() 
-function! s:log_autocmds_toggle()
-  augroup LogAutocmd
-    autocmd!
-  augroup END
+vim.cmd([[
+  command! LogAutocmds call s:log_autocmds_toggle() 
+  function! s:log_autocmds_toggle()
+    augroup LogAutocmd
+      autocmd!
+    augroup END
 
   let l:date = strftime('%F', localtime()) 
   let s:activate = get(s:, 'activate', 0) ? 0 : 1 
@@ -104,3 +105,4 @@ let s:aulist = [
       \ 'CompleteDone',
       \ 'User',
       \ ]
+]])
