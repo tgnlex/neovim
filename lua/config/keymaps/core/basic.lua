@@ -19,17 +19,6 @@ map("n", "[Q", "<cmd>cfirst<cr>zv", { silent = true, desc = "first qf item" })
 map("n", "]Q", "<cmd>clast<cr>zv", { silent = true, desc = "last qf item" })
 map("n", [[\d]],"<cmd>bprevious <bar> bdelete #<cr>",{silent=true,desc="del buffer"})
 
-map("n", [[\D]], function()
-  local buf_ids = vim.api.nvim_list_bufs()
-  local cur_buf = vim.api.nvim_win_get_buf(0)
-
-  for _, buf_id in pairs(buf_ids) do
-    if vim.api.nvim_get_option_value("buflisted", { buf = buf_id }) and buf_id ~= cur_buf then
-      vim.api.nvim_buf_delete(buf_id, { force = true })
-    end
-  end
-end, { desc = "delete other buffers" })
-
 map("n", "<space>o", "printf('m`%so<ESC>``', v:count1)", {expr = true,desc ="insert line below"})
 map("n", "<space>O", "printf('m`%sO<ESC>``', v:count1)", {expr = true,desc = "insert line above"})
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
@@ -44,13 +33,6 @@ map("x", ">", ">gv")
 
 map("n", "<leader>ev", "<cmd>tabnew $MYVIMRC <bar> tcd %:h<cr>", {silent = true,desc = "open init.lua" })
 
-map("n", "<leader>sv", function()
-  vim.cmd([[
-      update $MYVIMRC
-      source $MYVIMRC
-    ]])
-  vim.notify("Nvim config successfully reloaded!", vim.log.levels.INFO, { title = "nvim-config" })
-end, { silent = true, desc = "reload init.lua" })
 map("n", "<leader>v", "printf('`[%s`]', getregtype()[0])", {expr = true,
   desc = "reselect last pasted area"})
 map("n", "/", [[/\v]])
@@ -97,20 +79,6 @@ map("n", "<Down>", "<C-W>j")
 map({ "x", "o" }, "iu", "<cmd>call text_obj#URL()<cr>", { desc = "URL text object" })
 map({ "x", "o" }, "iB", ":<C-U>call text_obj#Buffer()<cr>", { desc = "buffer text object" })
 
-map("n", "J", function()
-  vim.cmd([[
-      normal! mzJ`z
-      delmarks z
-    ]])
-  end, { desc = "join lines without moving cursor"}
-  )
-map("n", "gJ", function()
-  vim.cmd([[
-      normal! mzgJ`z
-      delmarks z
-  ]])
-  end, {desc = "join lines without moving cursor"}
-)
  local undo_ch = { ",", ".", "!", "?", ";", ":" }
 for _, ch in ipairs(undo_ch) do map("i", ch, ch .. "<c-g>u") end
 map("i", "<A-;>", "<Esc>miA;<Esc>`ii")
@@ -119,22 +87,3 @@ map("i", "<C-E>", "<END>")
 map("c", "<C-A>", "<HOME>")
 map("i", "<C-D>", "<DEL>")
 
-map("n", "<leader>cb", function() 
-  local cnt = 0 
-  local blink_times = 7
-  local timer = uv.new_timer()
-  if timer == nil then 
-    return 
-  end 
-  timer:start(0, 100, vim.schedule_wrap(function()
-    vim.cmd([[
-      set cursorcolumn!
-      set cursorline!
-    ]])
-      if cnt == blink_times then 
-        timer:close()
-      end 
-      cnt = cnt + i 
-    end) 
-  )
-end, { desc = "show cursor" })

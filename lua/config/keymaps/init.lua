@@ -1,3 +1,2 @@
-require("config.keymaps.basic")
-require("config.keymaps.command")
+require("config.keymaps.core")
 require("config.keymaps.plugins")
