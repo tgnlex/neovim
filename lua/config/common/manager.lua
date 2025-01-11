@@ -23,8 +23,7 @@ return require("packer").startup(function(use)
   use {"nvim-lua/popup.nvim"}
   use {"nvim-lua/plenary.nvim"}
   use {"nvim-tree/nvim-web-devicons"}
-  -- CORE PLUGINS -- 
-  use {"kyazdani42/nvim-tree.lua"}
+  -- CORE -- 
   use {"nvim-treesitter/nvim-treesitter", ['do'] = ':TSUpdate'}
   -- COMPLETIONS --
   use {'hrsh7th/cmp-buffer'}
@@ -54,6 +53,7 @@ return require("packer").startup(function(use)
     }
   }
   -- FORMATTING --
+  use {"stevearc/conform.nvim"}
   use { 
     "windwp/nvim-autopairs", 
     event = "InsertEnter",
