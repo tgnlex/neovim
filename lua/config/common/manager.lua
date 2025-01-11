@@ -37,10 +37,24 @@ return require("packer").startup(function(use)
   -- SNIPPETS --
   use {'L3MON4D3/LuaSnip'}
   -- USER INTERFACE --
-  use{'lewis6991/gitsigns.nvim', requires={'nvim-lua/plenary.nvim'}}
-  use{"nvim-lualine/lualine.nvim", event="BufEnter", requires={"nvim-web-devicons"}}
-  use{"romgrk/barbar.nvim"}
+  use{ "lewis6991/gitsigns.nvim", requires={'nvim-lua/plenary.nvim'}}
+  use{ "nvim-lualine/lualine.nvim", event="BufEnter", requires={"nvim-web-devicons"}}
+  use{ 
+    "romgrk/barbar.nvim", 
+    requires = { 
+      'lewis6991/gitsigns.nvim', 
+      'nvim-tree/nvim-web-devicons',
+    }
+  }
+  -- FORMATTING --
+  use { 
+    "windwp/nvim-autopairs", 
+    event = "InsertEnter",
+    config = function()
+      require("nvim-autopairs").setup {}
+    end,
+  }
   -- FUNCTIONALITY --
-  use {"nvim-telescope/telescope.nvim", dependencies={"nvim-lus/plenary.nvim"}}
+  use { "nvim-telescope/telescope.nvim", dependencies={"nvim-lus/plenary.nvim"}}
   if PACKER_BOOTSTRAP then require('packer').sync() end
 end)

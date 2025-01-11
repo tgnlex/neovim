@@ -1,14 +1,9 @@
-local icons = require("config.plugins.barber.icons")
-local barber = require("barber")
+local icons = require("config.plugins.barbar.icons")
+local barbar = require("barbar")
 
 local levels = vim.diagnostic.severity
 
-icons.inactive = 'x'
-icons.modified =  '●'
-icons.pinned = ''
-
-
-barber.setup {
+barbar.setup {
   animation = true,
   clickable = true,
   exclude_ft = {'javascript'},
