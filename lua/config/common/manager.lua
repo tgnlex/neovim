@@ -40,6 +40,13 @@ return require("packer").startup(function(use)
   use{ "lewis6991/gitsigns.nvim", requires={'nvim-lua/plenary.nvim'}}
   use{ "nvim-lualine/lualine.nvim", event="BufEnter", requires={"nvim-web-devicons"}}
   use{ 
+    "nvim-tree/nvim-tree.lua",
+    dependencies = {"nvim-tree/nvim-web-devicons", opt = true },
+    opts = function()
+      require("config.plugins.tree")
+    end,
+  }
+  use{ 
     "romgrk/barbar.nvim", 
     requires = { 
       'lewis6991/gitsigns.nvim', 
