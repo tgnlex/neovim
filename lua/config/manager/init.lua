@@ -62,5 +62,7 @@ return require("packer").startup(function(use)
   -- FUNCTIONALITY --
   use { "nvim-telescope/telescope.nvim", dependencies={deps.plenary}}
   use { "ibhagwan/fzf-lua", dependencies={deps.icons}}
+  -- COLORSCHEMES --
+  use { "sainnhe/sonokai" }
   if PACKER_BOOTSTRAP then require('packer').sync() end
 end)
