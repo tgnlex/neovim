@@ -34,22 +34,14 @@ return require("packer").startup(function(use)
   -- SNIPPETS --
   use {'L3MON4D3/LuaSnip'}
   -- USER INTERFACE --
-
   use{ "nvim-lualine/lualine.nvim", event="BufEnter", requires={deps.icons}}
   use{ 
     "nvim-tree/nvim-tree.lua",
     dependencies = {devicons, opt = true },
-    opts = function()
-      require("config.plugins.tree")
-    end,
+    opts = function() require("config.plugins.tree") end,
   }
-  use{ 
-    "romgrk/barbar.nvim", 
-    requires = { 
-      deps.gitsign, 
-      deps.icons,
-    }
-  }
+  use{ "romgrk/barbar.nvim", requires = { deps.gitsign, deps.icons } }
+  use { "kosayoda/nvim-lightbulb"}
   -- FORMATTING --
   use {"stevearc/conform.nvim"}
   use { 
@@ -64,5 +56,6 @@ return require("packer").startup(function(use)
   use { "ibhagwan/fzf-lua", dependencies={deps.icons}}
   -- COLORSCHEMES --
   use { "sainnhe/sonokai" }
+  use { "sainnhe/edge" }
   if PACKER_BOOTSTRAP then require('packer').sync() end
 end)

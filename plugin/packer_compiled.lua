@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/root/.local/share/nvim/site/pack/packer/start/conform.nvim",
     url = "https://github.com/stevearc/conform.nvim"
   },
+  edge = {
+    loaded = true,
+    path = "/root/.local/share/nvim/site/pack/packer/start/edge",
+    url = "https://github.com/sainnhe/edge"
+  },
   ["fzf-lua"] = {
     loaded = true,
     path = "/root/.local/share/nvim/site/pack/packer/start/fzf-lua",
@@ -153,6 +158,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/root/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-lightbulb"] = {
+    loaded = true,
+    path = "/root/.local/share/nvim/site/pack/packer/start/nvim-lightbulb",
+    url = "https://github.com/kosayoda/nvim-lightbulb"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
