@@ -78,7 +78,9 @@ return require("packer").startup(function(use)
   use { "kevinhwang91/nvim-hlslens" }
   -- NOTIFICATIONS --
   use { "rcarriga/nvim-notify" }
-  -- NAVIGATION --
+  -- LINTING -- 
+  use { 'dense-analysis/ale' }
+	-- NAVIGATION --
   use { "smoka7/hop.nvim" }
   use { 
     "nvim-tree/nvim-tree.lua",

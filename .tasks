@@ -1,2 +1,5 @@
-[git]
+[git-auto]
 command=git add * && git commit -a -m "auto-committed" && git push
+[build]
+command=make
+
