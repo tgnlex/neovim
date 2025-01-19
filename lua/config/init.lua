@@ -1,5 +1,5 @@
-require("config.common")
 require("config.manager")
+require("config.common")
 require("config.plugins")
 require("config.modules")
 require("config.function")

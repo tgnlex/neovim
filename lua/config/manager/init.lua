@@ -45,9 +45,10 @@ return require("packer").startup(function(use)
   use { 'L3MON4D3/LuaSnip'}
   -- STATUS LINE --
   use { "nvim-lualine/lualine.nvim", event="BufEnter", requires={deps.icons}}
-  use { "akinsho/bufferline.nvim" }
+
   -- USER INTERFACE --
-  use { "stevearc/dressing.nvim" }
+  use { "akinsho/bufferline.nvim", tag = "*", dependencies = {deps.icons}}
+	use { "stevearc/dressing.nvim" }
   use { "bekaboo/dropbar.nvim" }
   use { "kosayoda/nvim-lightbulb" }
   -- DASHBOARD --
@@ -102,8 +103,15 @@ return require("packer").startup(function(use)
   use { "gbprod/yanky.nvim" }  
   -- TERMINAL --
   use { "2kabhishek/termim.nvim", cmd = cmds.termim }
-  -- INTEGRATIONS --
+  -- TASK RUNNER --
+	use { 'skywind3000/asyncrun.vim' }
+	-- LANG INTEGRATIONS --
+  use {"Olical/aniseed"}
+  -- APP INTEGRATIONS --
   use {"aserowy/tmux.nvim"}
+  -- PKG MANAGEMENT -- 
+  use {"vuki656/package-info.nvim", requires = {deps.nui}}
+  use {'saecki/crates.nvim'}
   -- COLORSCHEMES --
   use { "sainnhe/sonokai" }
   use { "sainnhe/edge" }

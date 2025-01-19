@@ -1,0 +1,9 @@
+#==================#
+####### HELP #######
+#==================#
+
+This folder is used to store variables
+for use throughout the configuration.
+Similar to the lib folder this is 
+not meant to be directly sourced into 
+the init.lua.

@@ -1,0 +1,11 @@
+#### NOTE ####
+Functions in this folder
+are meant to be used as utility
+functions for writing modules, 
+scripts, commands, and 
+in-editor functions. 
+
+These should not be imported directly into init.lua, 
+strictly used as a dependency for other parts of 
+my configuration.
+
