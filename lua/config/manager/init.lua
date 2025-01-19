@@ -104,6 +104,7 @@ return require("packer").startup(function(use)
   -- TERMINAL --
   use { "2kabhishek/termim.nvim", cmd = cmds.termim }
   -- TASK RUNNER --
+	use { 'skywind3000/asynctasks.vim'}
 	use { 'skywind3000/asyncrun.vim' }
 	-- LANG INTEGRATIONS --
   use {"Olical/aniseed"}

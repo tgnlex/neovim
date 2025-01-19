@@ -1,2 +1,3 @@
-require("config.commands.version")
-require("config.commands.logview")
+local dirname = "config.commands" .. "."
+require(dirname .. "version")
+require(dirname .. "logview")

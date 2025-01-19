@@ -10,7 +10,7 @@ vim.g.mouse = 'a'
 vim.g.loaded_netrw = 1 
 vim.g.loaded_netrwPlugin = 1
 vim.g.netrw_lifestyle = 3
-
+vim.g.asyncrun_open = 6
 
 
 if vim.g.is_win then 
