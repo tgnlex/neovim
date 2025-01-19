@@ -89,7 +89,11 @@ return require("packer").startup(function(use)
   }
   -- BOOKMARKS --
   use { "tomasky/bookmarks.nvim" }
-  -- GIT --
+  -- MACROS -- 
+	use { "desdic/macrothis.nvim" }
+	-- PROJECT MANAGEMENT --
+	use { "ahmedkhalf/project.nvim" }
+	-- GIT --
   use { "NeogitOrg/neogit",
    dependencies = {deps.plenary, deps.telescope}
   }
