@@ -115,7 +115,8 @@ return require("packer").startup(function(use)
 	-- LANG INTEGRATIONS --
   use {"dmmulroy/tsc.nvim"}
 	use {"Olical/aniseed"}
-  -- APP INTEGRATIONS --
+  use { "svermeulen/nvim-moonmaker" }
+	-- APP INTEGRATIONS --
   use {"aserowy/tmux.nvim"}
   -- WEBDEV --
 	use {"ray-x/web-tools.nvim"}
