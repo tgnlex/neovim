@@ -1,1 +1,3 @@
-require("config.modules.lsp")
+local dirname = "config.modules."
+require(dirname .. "lsp")
+require(dirname .. "logger")

@@ -1,6 +1,9 @@
-local packer_config = require("config.manager.packer")
-local deps = require("config.manager.deps")
-local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+local dirname = "config.manager" .. "."
+local config = require(dirname .. "packer")
+local cmds = require(dirname .. "commands")
+local deps = require(dirname .. "deps")
+local v = require("library.vars")
+local install = v.install_path
 vim.api.nvim_create_autocmd("BufWritePost", {
   group = vim.api.nvim_create_augroup("PACKER", { clear = true }),
   pattern = "packer.lua",
@@ -10,26 +13,31 @@ local ok, packer = pcall(require, "packer")
 if not ok then 
   return 
 end
-packer.init(packer_config)
+packer.init(config)
 return require("packer").startup(function(use)
   -- PLUGIN MANAGER --
   use {"wbthomason/packer.nvim"}
-  -- LIBRARIES -- 
+  -- DEPENDENCIES -- 
   use { deps.plenary }
+  use { deps.fugitive }
   use { deps.popup }
   use { deps.icons }
   use { deps.mini }
   use { deps.nui }
   use { deps.gitsign, require={ deps.plenary } }
-  -- TREESITTER -- 
+  -- Telescope Extensions --
+	use { deps.tscope.undo }
+	-- UTILITIES -- 
+	use { "NTBBloodbath/logging.nvim" }
+	-- TREESITTER -- 
   use { "nvim-treesitter/nvim-treesitter", ['do'] = ':TSUpdate'}
   use { "joosepAlviste/nvim-ts-context-commentstring" }
   use { "windwp/nvim-ts-autotag" }
   -- COMPLETIONS --
-  use { 'hrsh7th/cmp-buffer' }
+  use { 'hrsh7th/nvim-cmp' }
+	use { 'hrsh7th/cmp-buffer' }
   use { 'hrsh7th/cmp-path' }
   use { 'hrsh7th/cmp-cmdline' }
-  use { 'hrsh7th/nvim-cmp' }
   use { 'hrsh7th/cmp-nvim-lsp' }
   use { 'hrsh7th/cmp-nvim-lsp-signature-help' }
   use { 'saadparwaiz1/cmp_luasnip' }
@@ -41,18 +49,9 @@ return require("packer").startup(function(use)
   -- USER INTERFACE --
   use { "stevearc/dressing.nvim" }
   use { "bekaboo/dropbar.nvim" }
-  use { 
-    "nvim-tree/nvim-tree.lua",
-    dependencies = {deps.icons, opt = true },
-    opts = function() require("config.plugins.tree") end,
-  }
-  use { "romgrk/barbar.nvim", requires = { deps.gitsign, deps.icons } }
   use { "kosayoda/nvim-lightbulb" }
   -- DASHBOARD --
   use { 'nvimdev/dashboard-nvim', event = 'VimEnter', dependencies = {deps.icons} }
-  -- GIT --
-  use { "TimUntersberger/neogit" }
-  use { "akinsho/git-conflict.nvim" }
   -- FORMATTING --
   use { "stevearc/conform.nvim" }
   use { "sbdchd/neoformat" }
@@ -63,19 +62,48 @@ return require("packer").startup(function(use)
       require("nvim-autopairs").setup {}
     end,
   }
-  -- FUNCTIONALITY --
-  use { "numToStr/Comment.nvim" }
-  use { "luukvbaal/statuscol.nvim" }
-  use { "kevinhwang91/nvim-hlslens" }
-  use { "rcarriga/nvim-notify" }
-  use { "smoka7/hop.nvim" }
-  use { "nvim-telescope/telescope.nvim", dependencies={deps.plenary} }
+  -- FUZZY FINDER --
   use { "ibhagwan/fzf-lua", dependencies={deps.icons} }
+  use {
+    "nvim-telescope/telescope.nvim",
+    dependencies={ deps.plenary, deps.tscope.undo }
+  }
+  -- COMMENTS --
+  use { "numToStr/Comment.nvim" }
+  -- STATUS COLUMNS --
+  use { "luukvbaal/statuscol.nvim" }
+  -- HIGHLIGHTING --
+  use { "levouh/tint.nvim" }
+  use { "kevinhwang91/nvim-hlslens" }
+  -- NOTIFICATIONS --
+  use { "rcarriga/nvim-notify" }
+  -- NAVIGATION --
+  use { "smoka7/hop.nvim" }
+  use { 
+    "nvim-tree/nvim-tree.lua",
+    dependencies = {deps.icons, opt = true },
+    opts = function() require("config.plugins.tree") end,
+  }
+  -- BOOKMARKS --
   use { "tomasky/bookmarks.nvim" }
+  -- GIT --
+  use { "NeogitOrg/neogit",
+   dependencies = {deps.plenary, deps.telescope}
+  }
+	use {
+    "rbong/vim-flog",
+    dependencies = {deps.fugitive},
+    cmd = cmds.flog
+  }
   use { "akinsho/git-conflict.nvim" }
+  -- SEARCH --
   use { "ThePrimeagen/harpoon" }
-  use { "gbprod/yanky.nvim" }
-  
+  -- COPY + PASTE 
+  use { "gbprod/yanky.nvim" }  
+  -- TERMINAL --
+  use { "2kabhishek/termim.nvim", cmd = cmds.termim }
+  -- INTEGRATIONS --
+  use {"aserowy/tmux.nvim"}
   -- COLORSCHEMES --
   use { "sainnhe/sonokai" }
   use { "sainnhe/edge" }
