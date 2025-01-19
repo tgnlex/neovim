@@ -109,10 +109,16 @@ return require("packer").startup(function(use)
 	use { 'skywind3000/asynctasks.vim'}
 	use { 'skywind3000/asyncrun.vim' }
 	-- LANG INTEGRATIONS --
-  use {"Olical/aniseed"}
+  use {"dmmulroy/tsc.nvim"}
+	use {"Olical/aniseed"}
   -- APP INTEGRATIONS --
   use {"aserowy/tmux.nvim"}
-  -- PKG MANAGEMENT -- 
+  -- WEBDEV --
+	use {"ray-x/web-tools.nvim"}
+	use {"cjodo/convert.nvim"}
+	-- HTTP CLIENT -- 
+	use {"lima1909/resty.nvim", dependencies = {deps.plenary}}
+	-- PKG MANAGEMENT -- 
   use {"vuki656/package-info.nvim", requires = {deps.nui}}
   use {'saecki/crates.nvim'}
   -- COLORSCHEMES --
